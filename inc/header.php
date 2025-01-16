@@ -33,11 +33,12 @@ if (session_status() === PHP_SESSION_NONE) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <?php // لو السيشن موحوده هيعرضها
-                    if (isset($_SESSION['auth'])): ?>
+                    
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                        <?php // لو السيشن موحوده هيعرضها
+                    if (isset($_SESSION['auth'])): ?>
                         <li class="nav-item"><a class="nav-link" href="add_product.php">Add Product</a></li>
                     <?php //لو مش موجوده مش هيعرضم
                     endif; ?>
@@ -48,8 +49,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <?php //لو السيشن موجوده مش هيعرضهم
                     endif; ?>
                 </ul>
-                <?php // لو السيشن موحوده هيعرضها
-                if (isset($_SESSION['auth'])): ?>
+                
 
 <?php
             // Check if the session cartData is set, if not initialize it as an empty array
@@ -69,7 +69,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
                         </button>
                         <ul>
-
+                        <?php // لو السيشن موحوده هيعرضها
+                if (isset($_SESSION['auth'])): ?>
                             <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                         </ul>
                     <?php //لو مش موجوده مش هيعرضم

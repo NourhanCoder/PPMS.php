@@ -36,8 +36,20 @@ if (checkRequestMethod("POST") && checkPostInput("email")){
                 $user_found = true; // قيمة الخطأ في الكود السابق تتحول هنا لصحيحه اذا تم العثور على بيانات
                 $_SESSION['auth'] = [$user[0], $user[1], $user[2]]; //تخزين البيانات في جلسة لتسجيل الدخول 
                                     //id      //name   //email
-                redirect("../index.php");
-                die; //إنهاء التنفيذ بعد إعادة التوجيه لتجنب أي عمليات إضافية
+                if ($email === $user[2] && sha1($password) === $user[3]) {
+    $user_found = true;
+    $_SESSION['auth'] = [$user[0], $user[1], $user[2]]; // تخزين بيانات الجلسة
+    
+    // التحقق من وجود صفحة redirect
+    if (isset($_SESSION['redirect_to'])) {
+        $redirect_to = $_SESSION['redirect_to'];
+        unset($_SESSION['redirect_to']); // حذف القيمة من الجلسة بعد استخدامها
+        redirect("../$redirect_to");
+    } else {
+        redirect("../index.php");
+    }
+    die;
+}
             }
         }
         fclose($users_file);

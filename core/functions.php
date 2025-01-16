@@ -1,6 +1,7 @@
 <?php
-// هستخدم هنا اكواد عامه بحيث نتفادى تكرار الاكواد
-// to validate form submission methods (POST or GET)
+// هستخدم هنا دوال بحيث نتفادى تكرار الاكواد
+
+//التحقق من نوع طلب المستخدم (POST أو GET)
 function checkRequestMethod($method){
     if($_SERVER['REQUEST_METHOD'] == $method){
         return true;
@@ -9,7 +10,7 @@ function checkRequestMethod($method){
     return false;
 }
 
-// to check about the input that we will recieve from any form
+// التحقق مما إذا كانت قيمة معينة مرسلة عبر POST موجودة أم لا
 function checkPostInput($input){
     if(isset($_POST[$input])){
         return true;
@@ -18,12 +19,12 @@ function checkPostInput($input){
     return false;
 }
 
-//for filtration the inputs
+//تنظيف وإزالة أي رموز خطرة أو فراغات زائدة من المدخلات
 function sanitizeInput($input){
     return trim(htmlspecialchars(htmlentities($input)));
 }
 
-
+//إعادة توجيه المستخدم إلى صفحة أو رابط معين
 function redirect($path){
     header("location:$path");
 }

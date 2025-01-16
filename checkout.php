@@ -3,7 +3,11 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+if (!isset($_SESSION['auth'])) { // تحقق من تسجيل الدخول
+    $_SESSION['redirect_to'] = 'checkout.php'; // تخزين الصفحة الحالية
+    header('Location: login.php'); // إعادة التوجيه إلى صفحة تسجيل الدخول
+    exit;
+}
 $title = "CheckOut";
 include('inc/header.php'); ?>
 <!-- Header-->
